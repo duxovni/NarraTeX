@@ -22,7 +22,7 @@
 %% \pronoun{<command>}{<masc>}{<fem>}{<neut>} makes <command> a
 %% wrapper around \mfn.  It is used to create a list of
 %% gender-sensitive macros, mostly pronouns.  For example, given
-%% \pronoun{\They}{He}{She}{It}, \cJamesBond{\They} will produce He.
+%% \pronoun{\They}{He}{She}{They}, \cJamesBond{\They} will produce He.
 %%
 %%
 %%
@@ -67,7 +67,7 @@
 
   \newstat\MYcr	{Combat Rating}{CR}{2} %% for DarkWater-style combat
 
-  \FD\MYsex	{\male} %% \male, \female, \neuter, \ambiguous
+  \FD\MYsex	{\neuter} %% \male, \female, \neuter, \ambiguous
   \FD\MYrole	{} %% playerlist role
   \FD\MYgroupstr{} %% playerlist groupstring
   \FD\MYfile	{} %% character sheet filename (including .tex)
@@ -95,36 +95,40 @@
 \newcommand{\mf}[2]{\mfn{#1}{#2}{}}
 \newcommand{\pronoun}[4]{\def#1{\mfn{#2}{#3}{#4}}}
 
-\pronoun{\they}		{he}{she}{it}
-\pronoun{\They}		{He}{She}{It}
-\pronoun{\them}		{him}{her}{it}
-\pronoun{\Them}		{Him}{Her}{It}
-\pronoun{\their}	{his}{her}{its}
-\pronoun{\Their}	{His}{Her}{Its}
-\pronoun{\theirs}	{his}{hers}{its}
-\pronoun{\Theirs}	{His}{Hers}{Its}
-\pronoun{\themself}	{himself}{herself}{itself}
-\pronoun{\Themself}	{Himself}{Herself}{Itself}
+\pronoun{\they}		{he}{she}{they}
+\pronoun{\They}		{He}{She}{They}
+\pronoun{\them}		{him}{her}{them}
+\pronoun{\Them}		{Him}{Her}{Them}
+\pronoun{\their}	{his}{her}{their}
+\pronoun{\Their}	{His}{Her}{Their}
+\pronoun{\theirs}	{his}{hers}{theirs}
+\pronoun{\Theirs}	{His}{Hers}{Theirs}
+\pronoun{\themself}	{himself}{herself}{themself}
+\pronoun{\Themself}	{Himself}{Herself}{Themself}
 \pronoun{\spouse}	{husband}{wife}{spouse}
 \pronoun{\Spouse}	{Husband}{Wife}{Spouse}
-\pronoun{\offspring}	{son}{daughter}{offspring}
-\pronoun{\Offspring}	{Son}{Daughter}{Offspring}
+\pronoun{\offspring}	{son}{daughter}{child}
+\pronoun{\Offspring}	{Son}{Daughter}{Child}
 \pronoun{\kid}		{boy}{girl}{kid}
 \pronoun{\Kid}		{Boy}{Girl}{Kid}
 \pronoun{\sibling}	{brother}{sister}{sibling}
 \pronoun{\Sibling}	{Brother}{Sister}{Sibling}
 \pronoun{\parent}	{father}{mother}{parent}
 \pronoun{\Parent}	{Father}{Mother}{Parent}
-\pronoun{\uncle}	{uncle}{aunt}{uncle}
-\pronoun{\Uncle}	{Uncle}{Aunt}{Uncle}
-\pronoun{\nephew}	{nephew}{niece}{nephew}
-\pronoun{\Nephew}	{Nephew}{Niece}{Nephew}
-\def\aunt{\uncle}
-\def\Aunt{\Uncle}
-\def\niece{\nephew}
-\def\Niece{\Nephew}
-\pronoun{\human}	{man}{woman}{human}
-\pronoun{\Human}	{Man}{Woman}{Human}
+\pronoun{\pibling}	{uncle}{aunt}{pibling}
+\pronoun{\Pibling}	{Uncle}{Aunt}{Pibling}
+\pronoun{\nibling}	{nephew}{niece}{nibling}
+\pronoun{\Nibling}	{Nephew}{Niece}{Nibling}
+\def\aunt{\pibling}
+\def\Aunt{\Pibling}
+\def\uncle{\pibling}
+\def\Uncle{\Pibling}
+\def\niece{\nibling}
+\def\Niece{\Nibling}
+\def\nephew{\nibling}
+\def\Nephew{\Nibling}
+\pronoun{\person}	{man}{woman}{person}
+\pronoun{\Person}	{Man}{Woman}{Person}
 \pronoun{\sex}		{male}{female}{neuter}
 \pronoun{\Sex}		{Male}{Female}{Neuter}
 
