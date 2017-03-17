@@ -13,6 +13,23 @@ GameTeX; for details on using GameTeX, see `GameTeX-README` and the
 `README` files in the various subdirectories.  This README will focus
 on what has been changed from GameTeX.
 
+### Compiling
+
+NarraTeX includes a `Makefile` which removes the need to set
+environment variables as described in `GameTeX-README`.  To compile
+all of the files in the `Production/` subdirectory, producing
+collections of character sheets, bluesheets, greensheets, etc. ready
+for printing and sorting, simply run
+
+    make
+
+To compile a specific file, e.g. `Charsheets/johnsmith.tex`, run
+
+    make Charsheets/johnsmith.pdf
+
+Note that the argument to `make` should be a `.pdf` file, not a `.tex`
+file.
+
 ## License
 
 NarraTeX is (c) Sam Dukhovni, Ken Clary, and the MIT Assassins' Guild.
