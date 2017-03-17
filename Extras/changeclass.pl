@@ -38,9 +38,9 @@ sub change_pl_file($$$) {
 		       ".*\\\$gameclass = \"","\".*");
 }
 
-sub change_sh_file($$$) {
+sub change_makefile($$$) {
     return change_file($_[0], $_[1], $_[2],
-		       ".*export ","=.*");
+		       "^GAME=","\$");
 }
 
 
@@ -51,8 +51,8 @@ sub change_file_by_extension($$$) {
 	change_cls_file($_[0], $_[1], $_[2]);
     } elsif ($_[0] =~/\.tex$/) {
 	change_tex_file($_[0], $_[1], $_[2]);
-    } elsif ($_[0] =~/(\.sh|Makefile)$/) {
-        change_sh_file($_[0], $_[1], $_[2]);
+    } elsif ($_[0] =~/Makefile$/) {
+        change_makefile($_[0], $_[1], $_[2]);
     }
 }
 
