@@ -1,0 +1,6 @@
+*.aux
+*.log
+*.dvi
+*.pdf
+*~
+Production/json-PRINT.json
