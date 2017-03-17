@@ -38,9 +38,14 @@ sub change_pl_file($$$) {
 		       ".*\\\$gameclass = \"","\".*");
 }
 
+sub change_py_file($$$) {
+    return change_file($_[0], $_[1], $_[2],
+		       ".*gameclass = \"","\".*");
+}
+
 sub change_makefile($$$) {
     return change_file($_[0], $_[1], $_[2],
-		       "^GAME=","\$");
+		       "^GAMECLASS=","\$");
 }
 
 
@@ -51,6 +56,8 @@ sub change_file_by_extension($$$) {
 	change_cls_file($_[0], $_[1], $_[2]);
     } elsif ($_[0] =~/\.tex$/) {
 	change_tex_file($_[0], $_[1], $_[2]);
+    } elsif ($_[0] =~/\.py$/) {
+	change_py_file($_[0], $_[1], $_[2]);
     } elsif ($_[0] =~/Makefile$/) {
         change_makefile($_[0], $_[1], $_[2]);
     }
@@ -66,6 +73,8 @@ change_file_by_extension("$ARGV[0]/LaTeX/$ARGV[1].cls", $ARGV[1], $ARGV[2]);
 system("mv $ARGV[0]/LaTeX/$ARGV[1].cls $ARGV[0]/LaTeX/$ARGV[2].cls");
 change_file_by_extension("$ARGV[0]/Extras/gametex.pl", $ARGV[1], $ARGV[2]);
 system("chmod 700 $ARGV[0]/Extras/gametex.pl");
+change_file_by_extension("$ARGV[0]/Extras/makepackets.py", $ARGV[1], $ARGV[2]);
+system("chmod 700 $ARGV[0]/Extras/makepackets.py");
 open (FILES, "find \"$ARGV[0]\" -name '*.tex' |");
 while (defined( $_ = <FILES>)) {
     chomp $_;

@@ -13,16 +13,18 @@ import os.path
 import subprocess
 import sys
 
+gameclass = "game"
+
 sheet_types = ["listchar", "listblue", "listgreen"]
 
 def make_sheet(char, sheet):
     filename = "%s-%s.tex" % (char, sheet)
     with open(filename, "w") as f:
-        f.write(r"""\documentclass[%s]{oglaf}
+        f.write(r"""\documentclass[%s]{%s}
         \begin{document}
         \%s{}
         \end{document}
-        """ % (sheet, char))
+        """ % (sheet, gameclass, char))
     subprocess.check_call(["pdflatex", filename])
 
 
