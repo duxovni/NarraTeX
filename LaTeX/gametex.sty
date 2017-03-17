@@ -1760,7 +1760,21 @@
 %%%%%
 %%
 \long\def\jsonkeyval#1#2{%
+  \protected@edef\@keycontents{#1}
   \protected@edef\@valcontents{#2}
+  \begingroup%
+    \gdef\@sanitizedjson{}%
+    \catcode`\\12%
+    \catcode`\{12%
+    \catcode`\}12%
+    \catcode`\ 12%
+    \everyeof{\@endsanitize}%
+    \expandafter\expandafter\expandafter\@iteratesanitize\expandafter%
+      \scantokens\expandafter{\@keycontents}%
+  \endgroup%
+  \append\MYjson{"}%
+  \expandafter\append\expandafter\MYjson\expandafter{\@sanitizedjson}%
+  \append\MYjson{":"}%
   \begingroup%
     \gdef\@sanitizedjson{}%
     \catcode`\\12%
@@ -1771,7 +1785,6 @@
     \expandafter\expandafter\expandafter\@iteratesanitize\expandafter%
       \scantokens\expandafter{\@valcontents}%
   \endgroup%
-  \append\MYjson{"#1":"}%
   \expandafter\append\expandafter\MYjson\expandafter{\@sanitizedjson}%
   \append\MYjson{",}%
   }
@@ -1781,20 +1794,14 @@
 \def\@@endsanitize{\relax}
 \def\@appendbackslash{\expandafter\@global@append\expandafter\@sanitizedjson%
   \expandafter{\string\\}}
-\def\@appendbackquote{\expandafter\@global@append\expandafter\@sanitizedjson%
-  \expandafter{\string\`}}
-\def\@appendfrontquote{\expandafter\@global@append\expandafter\@sanitizedjson%
-  \expandafter{\string\'}}
 \def\@appenddoublequote{\expandafter\@global@append\expandafter\@sanitizedjson%
   \expandafter{\string\"}}
 \long\def\@sanitizeforjson#1{%
   \def\@@next{\@sanitizeforjson}%
-  \ifx#1'\@appendfrontquote%
-  \else\ifx#1`\@appendbackquote%
-  \else\ifx#1"\@appenddoublequote%
+  \ifx#1"\@appenddoublequote%
   \else\expandafter\ifx\expandafter#1\@backslashchar\@appendbackslash%
   \else\ifx#1\@endsanitize\def\@@next{}%
-  \else\@global@append\@sanitizedjson{#1}\fi\fi\fi\fi\fi%
+  \else\@global@append\@sanitizedjson{#1}\fi\fi\fi%
   \@@next}
 
 
