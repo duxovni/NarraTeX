@@ -19,7 +19,8 @@ NarraTeX includes a `Makefile` which removes the need to set
 environment variables as described in `GameTeX-README`.  To compile
 all of the files in the `Production/` subdirectory, producing
 collections of character sheets, bluesheets, greensheets, etc. ready
-for printing and sorting, simply run
+for printing and sorting, simply go to your top-level `NarraTeX`
+directory and run
 
     make
 
