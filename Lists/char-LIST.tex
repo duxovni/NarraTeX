@@ -12,14 +12,13 @@
 %%
 %%
 %%
-%% \MYsex is set to either \male, \female, \neuter, or \ambiguous, as
-%% correct for the character.  \mfn{<masculine>}{<feminine>}{<neuter>}
-%% will produce the correct form based on the current value of \MYsex
-%% (\ambiguous will lead to <masculine>/<feminine>).  \mfn should only
-%% be used within the scope of a Char macro.  \mf{<masc>}{<fem>} works
-%% just like \mfn with the <neut> arg left blank.
+%% \MYsex is set to either \male, \female, or \nonbinary, as correct
+%% for the character.  \mfn{<masculine>}{<feminine>}{<nonbinary>} will
+%% produce the correct form based on the current value
+%% of \MYsex.  \mfn should only be used within the scope of a Char
+%% macro.
 %%
-%% \pronoun{<command>}{<masc>}{<fem>}{<neut>} makes <command> a
+%% \pronoun{<command>}{<masc>}{<fem>}{<enby>} makes <command> a
 %% wrapper around \mfn.  It is used to create a list of
 %% gender-sensitive macros, mostly pronouns.  For example, given
 %% \pronoun{\They}{He}{She}{They}, \cJamesBond{\They} will produce He.
@@ -67,7 +66,7 @@
 
   \newstat\MYcr	{Combat Rating}{CR}{2} %% for DarkWater-style combat
 
-  \FD\MYsex	{\neuter} %% \male, \female, \neuter, \ambiguous
+  \FD\MYsex	{\nonbinary} %% \male, \female, \nonbinary
   \FD\MYrole	{} %% playerlist role
   \FD\MYgroupstr{} %% playerlist groupstring
   \FD\MYfile	{} %% character sheet filename (including .tex)
@@ -86,13 +85,11 @@
 %%%%%
 %% pronouns and similar gender-based macros
 %%
-%% \male, \female, \neuter, \ambiguous
-%% \mfn{<masculine>}{<feminine>}{<neuter>}
-%% \mf{<masculine>}{<feminine>}
-%% \pronoun{<command>}{<masculine>}{<feminine>}{<neuter>}
-\def\male{0}\def\female{1}\def\neuter{2}\def\ambiguous{3}
-\newcommand{\mfn}[3]{\ifcase\MYsex#1\or#2\or#3\else#1/#2\fi}
-\newcommand{\mf}[2]{\mfn{#1}{#2}{}}
+%% \male, \female, \nonbinary
+%% \mfn{<masculine>}{<feminine>}{<nonbinary>}
+%% \pronoun{<command>}{<masculine>}{<feminine>}{<nonbinary>}
+\def\male{0}\def\female{1}\def\nonbinary{2}
+\newcommand{\mfn}[3]{\ifcase\MYsex#1\or#2\else#3\fi}
 \newcommand{\pronoun}[4]{\def#1{\mfn{#2}{#3}{#4}}}
 
 \pronoun{\they}		{he}{she}{they}
@@ -129,8 +126,8 @@
 \def\Nephew{\Nibling}
 \pronoun{\person}	{man}{woman}{person}
 \pronoun{\Person}	{Man}{Woman}{Person}
-\pronoun{\sex}		{male}{female}{neuter}
-\pronoun{\Sex}		{Male}{Female}{Neuter}
+\pronoun{\sex}		{male}{female}{non-binary}
+\pronoun{\Sex}		{Male}{Female}{Non-binary}
 
 
 %%%%%
