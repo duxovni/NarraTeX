@@ -15,7 +15,7 @@ import sys
 
 gameclass = "game"
 
-sheet_types = ["listchar", "listblue", "listgreen"]
+sheet_types = ["listchar", "badges", "abils", "carditems", "listblue", "listgreen"]
 
 def make_sheet(char, sheet):
     filename = "%s-%s.tex" % (char, sheet)
