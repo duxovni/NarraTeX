@@ -19,7 +19,7 @@ sheet_types = ["listchar", "badges", "abils", "carditems", "listblue", "listgree
 
 def make_sheet(char, sheet):
     jobname = "%s-%s" % (char, sheet)
-    commands = "\documentclass[%s]{%s}\begin{document}\%s{}\end{document}" % (sheet, gameclass, char)
+    commands = r"\documentclass[%s]{%s}\begin{document}\%s{}\end{document}" % (sheet, gameclass, char)
     subprocess.check_call(["pdflatex", "-jobname", jobname, commands])
 
 
