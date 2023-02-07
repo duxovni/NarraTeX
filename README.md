@@ -18,7 +18,7 @@ have been changed from GameTeX.
 
 First, get a copy of this repository, and go inside it:
 
-    git clone https://github.com/sdukhovni/NarraTeX
+    git clone https://github.com/duxovni/NarraTeX
     cd NarraTeX
 
 The first thing you'll want to do is choose a classname for your
@@ -74,7 +74,7 @@ file.
 
 ## License
 
-NarraTeX is (c) Sam Dukhovni, Ken Clary, and the MIT Assassins' Guild.
+NarraTeX is (c) Faye Duxovni, Ken Clary, and the MIT Assassins' Guild.
 You may use, copy, and/or modify this software for any purpose with or
 without fee, provided that the above copyright notice and this
 permission notice appear in all copies.
